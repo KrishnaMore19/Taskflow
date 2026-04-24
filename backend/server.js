@@ -25,6 +25,15 @@ app.use(express.json({ limit: '10kb' }));
 // Parse URL-encoded bodies
 app.use(express.urlencoded({ extended: false }));
 
+
+// Root route for Render keep-alive / browser test
+app.get('/', (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: 'TaskFlow backend is running'
+  });
+});
+
 // Health check endpoint
 app.get('/api/health', (req, res) => {
   res.status(200).json({
